@@ -1,0 +1,105 @@
+! https://github.com/solarized/xresources/blob/master/solarized
+! --[ Solarized Colors ]----------------------
+
+URxvt.intensityStyles:         false
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+!
+! URxvt*background:            S_base03
+
+URxvt*.depth: 32
+URxvt*background:              [95]#002b36
+URxvt*foreground:              S_base0
+URxvt*fading:                  40
+URxvt*fadeColor:               S_base03
+URxvt*cursorColor:             S_base1
+URxvt*pointerColorBackground:  S_base01
+URxvt*pointerColorForeground:  S_base1
+
+URxvt*color0:                  S_base02
+URxvt*color1:                  S_red
+URxvt*color2:                  S_green
+URxvt*color3:                  S_yellow
+URxvt*color4:                  S_blue
+URxvt*color5:                  S_magenta
+URxvt*color6:                  S_cyan
+URxvt*color7:                  S_base2
+URxvt*color8:                  S_cyan
+URxvt*color9:                  S_orange
+URxvt*color10:                 S_base01
+URxvt*color11:                 S_base00
+URxvt*color12:                 S_base0
+URxvt*color13:                 S_violet
+URxvt*color14:                 S_base1
+URxvt*color15:                 S_base3
+
+URxvt*.scrollstyle:            plain
+URxvt*.scrollTtyOutput:        false
+URxvt*.scrollWithBuffer:       true
+URxvt*.scrollTtyKeypress:      true
+URxvt*.loginShell:             true
+URxvt*.externalBorder:         1
+URxvt*.internalBorder:         1
+
+URxvt*.letterSpace:            -1
+URxvt*.font:                   xft:Ubuntu Mono derivative Powerline:size=16:antialias=true
+URxvt*.boldFont:               xft:Ubuntu Mono derivative Powerline:size=16:bold:antialias=true
+
+URxvt*.perl-ext-common:        default,matcher,clipboard,url-select,keyboard-select,vtwheel,font-size
+
+URxvt*.url-launcher:           firefox
+URxvt*.matcher.button:         1
+URxvt*.colorUL:                S_base01
+
+URxvt*.keysym.C-Up:            perl:font-size:increase
+URxvt*.keysym.C-Down:          perl:font-size:decrease
+URxvt*.keysym.C-S-Up:          perl:font-size:incglobal
+URxvt*.keysym.C-S-Down:        perl:font-size:decglobal
+
+URxvt*.iso14755:               false
+URxvt*.iso14755_52:            false
+
+URxvt*.url-select.underline:   true
+URxvt*.keysym.M-u:             perl:url-select:select_next
+URxvt*.keysym.C-M-Escape:      perl:keyboard-select:activate
+URxvt*.keysym.C-M-s:           perl:keyboard-select:search
+URxvt*.keysym.C-M-c:           perl:clipboard:copy
+URxvt*.keysym.C-M-v:           perl:clipboard:paste
+URxvt*.keysym.C-M-C-v:         perl:clipboard:paste_escaped
+
+URxvt*.clipboard.copycmd:      xclip -i -selection clipboard
+URxvt*.clipboard.pastecmd:     xclip -o -selection clipboard:        96
+
+Xft.antialias:                 true
+Xft.rgba:                      rgb
+Xft.hinting:                   true
+Xft.hintstyle:                 hintslight
