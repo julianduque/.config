@@ -113,10 +113,10 @@ cpuicon:set_image(beautiful.widget_cpu)
 cpugraph = awful.widget.graph()
 cpugraph:set_width(40):set_height(12)
 cpugraph:set_background_color(beautiful.fg_off_widget)
-vicious.register(cpugraph,  vicious.widgets.cpu, "$1", 5)
+vicious.register(cpugraph,  vicious.widgets.cpu, "$1", 2)
 
 cputext = wibox.widget.textbox()
-vicious.register(cputext, vicious.widgets.cpu, " $1%", 5)
+vicious.register(cputext, vicious.widgets.cpu, " $1%", 2)
 
 tzsicon = wibox.widget.imagebox()
 tzsicon:set_image(beautiful.widget_temp)
@@ -188,6 +188,10 @@ wificon:set_image(beautiful.widget_wifi)
 wifiwidget = wibox.widget.textbox()
 
 vicious.register(wifiwidget, vicious.widgets.wifi, '${ssid} ${linp}%' , 3, "wlp2s0")
+
+wifiwidget:buttons(awful.util.table.join(
+  awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e wicd-curses") end)
+))
 
 -- Net Widget
 dnicon = wibox.widget.imagebox()
@@ -282,15 +286,15 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(tzsicon)
+    right_layout:add(tzswidget)
     right_layout:add(separator)
     right_layout:add(cpuicon)
     right_layout:add(cpugraph)
     right_layout:add(cputext)
     right_layout:add(separator)
-    right_layout:add(tzsicon)
-    right_layout:add(tzswidget)
-    right_layout:add(separator)
     right_layout:add(memicon)
+    right_layout:add(separator)
     right_layout:add(membar)
     right_layout:add(memtext)
     right_layout:add(separator)
