@@ -1,0 +1,7 @@
+let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+
+let g:spfg13_no_views = 1
+let g:spf13_no_autochdir = 1
+let g:airline_powerline_fonts = 1
+let g:spf13_noninvasive_completion = 1
+let g:spf13_no_conceal = 1

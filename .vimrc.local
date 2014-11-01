@@ -1,0 +1,37 @@
+" Color Customization
+colorscheme solarized
+set background="dark"
+let &colorcolumn=join(range(81,1900),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+let &colorcolumn="80,".join(range(120,1900),",")
+
+" Arduino Syntax
+autocmd! BufNewFile,BufRead *.ino setlocal ft=c
+autocmd! BufNewFile,BufRead *.pde setlocal ft=c
+
+nnoremap j :m .+1<CR>==
+nnoremap k :m .-2<CR>==
+inoremap k <Esc>:m .-2<CR>==gi
+inoremap j <Esc>:m .+1<CR>==gi
+vnoremap j :m '>+1<CR>gv=gv
+vnoremap k :m '<-2<CR>gv=gv
+
+" Highlight all instances of word under cursor, when idle.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorMoved * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction

@@ -1,0 +1,27 @@
+"sudo xbacklight -inc 10"
+    m:0x0 + c:233
+    XF86MonBrightnessDown
+
+"sudo xbacklight -dec 10"
+    m:0x0 + c:232
+    XF86MonBrightnessUp
+
+"sudo asus-kbd-backlight down"
+    m:0x0 + c:237
+    XF86KbdBrightnessDown
+
+"sudo asus-kbd-backlight up"
+    m:0x0 + c:238
+    XF86KbdBrightnessUp
+
+"ponymix toggle"
+    m:0x0 + c:121
+    XF86AudioMute
+
+"ponymix decrease 5"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+"ponymix increase 5"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume

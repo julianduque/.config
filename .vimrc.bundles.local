@@ -1,0 +1,10 @@
+let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'ruby', 'javascript', 'html', 'misc']
+
+Bundle 'moll/vim-node'
+Bundle 'node.js'
+Bundle 'mattn/emmet-vim'
+Bundle 'jamescarr/snipmate-nodejs'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'carlosgaldino/elixir-snippets'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'mustache/vim-mustache-handlebars'
