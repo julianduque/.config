@@ -115,6 +115,11 @@ cpugraph:set_width(40):set_height(12)
 cpugraph:set_background_color(beautiful.fg_off_widget)
 vicious.register(cpugraph,  vicious.widgets.cpu, "$1", 2)
 
+cpugraph:buttons(awful.util.table.join(
+  awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e htop") end)
+))
+
+
 cputext = wibox.widget.textbox()
 vicious.register(cputext, vicious.widgets.cpu, " $1%", 2)
 
