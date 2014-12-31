@@ -119,10 +119,6 @@ cpugraph:buttons(awful.util.table.join(
   awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e htop") end)
 ))
 
-
-cputext = wibox.widget.textbox()
-vicious.register(cputext, vicious.widgets.cpu, " $1%", 2)
-
 tzsicon = wibox.widget.imagebox()
 tzsicon:set_image(beautiful.widget_temp)
 
@@ -142,10 +138,10 @@ membar = awful.widget.progressbar()
 membar:set_vertical(true):set_ticks(true)
 membar:set_height(12):set_width(8):set_ticks_size(2)
 membar:set_background_color(beautiful.fg_off_widget)
-vicious.register(membar, vicious.widgets.mem, "$1", 5)
+vicious.register(membar, vicious.widgets.mem, "$1", 10)
 
 memtext = wibox.widget.textbox()
-vicious.register(memtext, vicious.widgets.mem, " $1%", 5)
+vicious.register(memtext, vicious.widgets.mem, " $1%", 10)
 
 -- File System
 fsicon = wibox.widget.imagebox()
@@ -192,7 +188,7 @@ wificon = wibox.widget.imagebox()
 wificon:set_image(beautiful.widget_wifi)
 wifiwidget = wibox.widget.textbox()
 
-vicious.register(wifiwidget, vicious.widgets.wifi, '${ssid} ${linp}%' , 3, "wlp2s0")
+vicious.register(wifiwidget, vicious.widgets.wifi, '${ssid} ${linp}%' , 3, "wlan0")
 
 wifiwidget:buttons(awful.util.table.join(
   awful.button({ }, 1, function () awful.util.spawn(terminal .. " -e wicd-curses") end)
@@ -206,8 +202,8 @@ upicon:set_image(beautiful.widget_netup)
 netwidget = wibox.widget.textbox()
 
 vicious.register(netwidget, vicious.widgets.net, '<span color="'
-  .. beautiful.fg_netdn_widget ..'">${wlp2s0 down_kb}</span> <span color="'
-  .. beautiful.fg_netup_widget ..'">${wlp2s0 up_kb}</span>', 3)
+  .. beautiful.fg_netdn_widget ..'">${wlan0 down_kb}</span> <span color="'
+  .. beautiful.fg_netup_widget ..'">${wlan0 up_kb}</span>', 3)
 
 dateicon = wibox.widget.imagebox()
 dateicon:set_image(beautiful.widget_date)
@@ -291,12 +287,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(tzsicon)
-    right_layout:add(tzswidget)
-    right_layout:add(separator)
     right_layout:add(cpuicon)
     right_layout:add(cpugraph)
-    right_layout:add(cputext)
+    right_layout:add(separator)
+    right_layout:add(tzsicon)
+    right_layout:add(tzswidget)
     right_layout:add(separator)
     right_layout:add(memicon)
     right_layout:add(separator)
@@ -414,10 +409,10 @@ globalkeys = awful.util.table.join(
     -- PrintScreen 
     awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'up $f && mv $f ~/Pictures/screenshots/ 2>/dev/null'") end),
     -- Firefox
-    awful.key({ }, "F1", function () awful.util.spawn("firefox") end),
-    awful.key({ }, "F2", function () awful.util.spawn("chromium") end),
-    awful.key({ }, "F3", function () awful.util.spawn("skype") end),
-    awful.key({ }, "F4", function () awful.util.spawn("shutter") end)
+    awful.key({ modkey, }, "F1", function () awful.util.spawn("firefox") end),
+    awful.key({ modkey, }, "F2", function () awful.util.spawn("chromium") end),
+    awful.key({ modkey, }, "F3", function () awful.util.spawn("skype") end),
+    awful.key({ modkey, }, "F4", function () awful.util.spawn("shutter") end)
 )
 
 clientkeys = awful.util.table.join(
